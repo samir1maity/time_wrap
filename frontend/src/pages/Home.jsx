@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import { Sidebar } from "../components/Sidebar/Sidebar";
 import { Header } from "../components/Header/Header";
+import Todoinput from "../components/Main/Todoinput";
 
 const Home = () => {
   // states which is use for primary thing
-  const [activeItem, setActiveItem] = useState('Calendar');
-
 
   return (
     <div className="flex">
-      <Sidebar activeItem={activeItem} setActiveItem={setActiveItem}/>
-      <Header activeItem={activeItem} />
+      <Todoinput />
     </div>
   );
 };
