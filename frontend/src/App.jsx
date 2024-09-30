@@ -1,12 +1,12 @@
-import './App.css'
+import "./App.css";
+import Home from "./pages/Home";
 
 function App() {
-
   return (
     <>
-     <h1> Manage Your tasks </h1>
+      <Home />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
