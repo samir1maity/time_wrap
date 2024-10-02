@@ -1,14 +1,16 @@
-import React, { useState } from "react";
-import { Sidebar } from "../components/Sidebar/Sidebar";
-import { Header } from "../components/Header/Header";
+/** @format */
+
+import { useState } from "react";
 import Todoinput from "../components/Main/Todoinput";
+import TodoList from "../components/Main/TodoList";
 
 const Home = () => {
-  // states which is use for primary thing
+  const [todos, setTodos] = useState([]);
 
   return (
-    <div className="flex">
-      <Todoinput />
+    <div className='flex flex-col'>
+      <Todoinput setTodos={setTodos} />
+      <TodoList todos={todos} />
     </div>
   );
 };
