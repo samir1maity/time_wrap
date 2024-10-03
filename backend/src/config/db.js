@@ -10,4 +10,4 @@ const userModel = new Schema({
   username: { type: String },
 });
 
-export default mongoose.model("users", userModel);
+export default mongoose.model("user", userModel);

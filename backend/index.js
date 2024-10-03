@@ -7,6 +7,7 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 dotenv.config();
 import mongoose from "mongoose";
+import ApiRoute from './src/routes/index.js'
 
 import users from "./src/config/db.js";
 
@@ -23,49 +24,55 @@ app.use(
     origin: "http://localhost:5173",
   })
 );
+app.use('/api', ApiRoute)
 
-app.post("/signup", async (req, res) => {
-  const name = "samir";
-  const email = req.body.email;
-  const password = req.body.password;
-  const username = req.body.username;
+// app.post("/signup", async (req, res) => {
+//   const { email, password, username, firstName, lastName } = req.body
+//   if (email === "" || password === "" || username === "") {
+//     return res.json({
+//       msg: "something went wrong !"
+//     })
+//   } else {
+//     await users.create({
+//       email: email,
+//       password: password,
+//       username: username,
+//     });
+//     return res.json({
+//       msg: "register success",
+//     });
+//   }
+// });
 
-  console.log("req.body.email", req.body.email);
+// app.post("/signin", async (req, res) => {
+//   const { username, password } = req.body
+//   if (username === "" || password === "") {
+//     return res.json({
+//       msg: "invaild credentials"
+//     })
+//   } else {
+//    const user = await users.findOne({ username, password })
+//    console.log('user', user)
+//     if (!user) {
+//       res.json({ msg: "user is not valid" })
+//     } else {
+//      const token = jwt.sign(
+//         { username: username },
+//         JWT_SECRET
+//       );
+//       res.cookie("token", token);
+//       res.send("Logged in!");
+//     }
+//   }
+// });
 
-  const temp = await users.create({
-    name: name,
-    email: email,
-    password: password,
-    username: username,
-  });
 
-  console.log("temp", temp);
+// app.get("/cookies", (req, res) => {
+//   console.log("Cookies from request:", req.cookies); // Log cookies received from the client
+//   res.send(req.cookies); // Send cookies back to the client
+// });
 
-  res.json({
-    msg: "register success",
-  });
-});
 
-app.post("/signin", (req, res) => {
-  const email = req.body.email;
-  const password = req.body.password;
-  // do db validations, fetch id of user from db
-  const token = jwt.sign(
-    {
-      id: 1,
-    },
-    JWT_SECRET
-  );
-  console.log("res.cookie", res.cookie);
-  res.cookie("token", token);
-  res.send("Logged in!");
-});
-
-app.get("/cookies", (req, res) => {
-  console.log("Cookies from request:", req.cookies); // Log cookies received from the client
-  res.send(req.cookies); // Send cookies back to the client
-});
-
-app.listen(process.env.PORT, () => {
+app.listen(3005, () => {
   console.log("backend is running on PORT::", process.env.PORT);
 });
