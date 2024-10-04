@@ -7,7 +7,7 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 dotenv.config();
 import mongoose from "mongoose";
-import ApiRoute from './src/routes/index.js'
+import ApiRoute from "./src/routes/index.js";
 
 import users from "./src/config/db.js";
 
@@ -24,7 +24,7 @@ app.use(
     origin: "http://localhost:5173",
   })
 );
-app.use('/api', ApiRoute)
+app.use("/api", ApiRoute);
 
 // app.post("/signup", async (req, res) => {
 //   const { email, password, username, firstName, lastName } = req.body
@@ -66,12 +66,10 @@ app.use('/api', ApiRoute)
 //   }
 // });
 
-
 // app.get("/cookies", (req, res) => {
 //   console.log("Cookies from request:", req.cookies); // Log cookies received from the client
 //   res.send(req.cookies); // Send cookies back to the client
 // });
-
 
 app.listen(3005, () => {
   console.log("backend is running on PORT::", process.env.PORT);
